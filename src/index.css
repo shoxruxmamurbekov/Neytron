@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* Dark mode toggled by `.dark` class on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Design tokens — change colors globally here */
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9ebff;
+  --color-brand-500: #1d6fd8;
+  --color-brand-600: #1758b0;
+  --color-brand-700: #124387;
+
+  --color-volt: #f5b400; /* elektr ogohlantirish aksenti */
+  --color-danger: #d93025;
+  --color-danger-soft: #fdecea;
+  --color-success: #1e8e3e;
+  --color-success-soft: #e6f4ea;
+  --color-warning: #b26a00;
+  --color-warning-soft: #fff4e0;
+}
+
+:root {
+  --surface: #ffffff;
+  --surface-muted: #f6f8fb;
+  --border: #e3e8ef;
+  --text: #0f1b2d;
+  --text-muted: #5b6b82;
+  color-scheme: light;
+}
+
+.dark {
+  --surface: #0f1726;
+  --surface-muted: #141e30;
+  --border: #22304a;
+  --text: #e6edf7;
+  --text-muted: #94a3b8;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--surface-muted);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
