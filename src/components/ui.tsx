@@ -1,6 +1,6 @@
-import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from 'react';
+import { useEffect, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from 'react';
 import { Link } from 'react-router-dom';
-import { Inbox } from 'lucide-react';
+import { Inbox, X } from 'lucide-react';
 
 const cx = (...parts: (string | false | undefined | null)[]) => parts.filter(Boolean).join(' ');
 
@@ -127,6 +127,70 @@ export function Spinner({ label = 'Yuklanmoqda…' }: { label?: string }) {
     <div role="status" className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
       <span className="size-4 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" aria-hidden />
       {label}
+    </div>
+  );
+}
+
+/** Oddiy modal dialog: Escape bilan yopiladi, fon bosilganda yopiladi, sarlavha aria-labelledby bilan bog‘langan. */
+export function Modal({
+  open,
+  title,
+  onClose,
+  children,
+  footer,
+  wide = false,
+}: {
+  open: boolean;
+  title: string;
+  onClose: () => void;
+  children: ReactNode;
+  footer?: ReactNode;
+  wide?: boolean;
+}) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+  const titleId = `modal-title-${title.replace(/\s+/g, '-').toLowerCase()}`;
+  return (
+    <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-4">
+      <button type="button" aria-label="Yopish" tabIndex={-1} className="absolute inset-0 bg-black/40" onClick={onClose} />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className={cx(
+          'relative flex max-h-[92dvh] w-full flex-col rounded-t-2xl border border-[var(--border)] bg-[var(--surface)] shadow-xl sm:rounded-2xl',
+          wide ? 'sm:max-w-3xl' : 'sm:max-w-lg',
+        )}
+      >
+        <div className="flex items-center justify-between border-b border-[var(--border)] px-5 py-4">
+          <h2 id={titleId} className="text-lg font-semibold">
+            {title}
+          </h2>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Yopish"
+            className="grid size-9 place-items-center rounded-lg hover:bg-[var(--surface-muted)]"
+          >
+            <X className="size-5" aria-hidden />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-5 py-4">{children}</div>
+        {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-[var(--border)] px-5 py-4">{footer}</div>}
+      </div>
     </div>
   );
 }
