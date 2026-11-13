@@ -68,3 +68,58 @@ body {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ---------- Uy loyihasi: chop etish / PDF hisobot ---------- */
+.print-only {
+  display: none;
+}
+
+/* Hisobot har doim yorug‘ fonda ko‘rinadi (qorong‘i mavzuga bog‘liq emas) */
+.report {
+  --surface: #ffffff;
+  --surface-muted: #f6f8fb;
+  --border: #e3e8ef;
+  --text: #0f1b2d;
+  --text-muted: #5b6b82;
+  color: var(--text);
+  background: var(--surface);
+  font-family: var(--font-sans);
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-only,
+  .print-only * {
+    visibility: visible;
+  }
+
+  .print-only {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    font-size: 11px;
+  }
+
+  .report-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  table {
+    break-inside: auto;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+}

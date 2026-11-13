@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   BookOpen,
   Calculator,
+  House,
   Info,
   Library,
   LayoutDashboard,
@@ -21,6 +22,7 @@ export const navItems = [
   { to: '/diagnostics', label: 'Diagnostika', icon: Stethoscope },
   { to: '/learning', label: 'O‘quv markazi', icon: BookOpen },
   { to: '/calculators', label: 'Kalkulyatorlar', icon: Calculator },
+  { to: '/uy-loyihasi', label: 'Uy loyihasi', icon: House },
   { to: '/knowledge', label: 'Bilimlar kutubxonasi', icon: Library },
   { to: '/about', label: 'NEYTRON haqida', icon: Info },
   { to: '/settings', label: 'Sozlamalar', icon: SettingsIcon },
