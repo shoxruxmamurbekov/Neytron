@@ -68,7 +68,7 @@ export default function ProjectCard({ project, onEdit, onDelete }: Props) {
         </p>
         <div className="flex flex-wrap gap-2">
           <Link
-            to={`/uy-loyihasi/${project.id}`}
+            to={`/visual-montage/${project.id}`}
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600"
           >
             Ochish

@@ -8,7 +8,7 @@ export function Card({ children, className, as: Tag = 'div' }: { children: React
   return (
     <Tag
       className={cx(
-        'rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-sm',
+        'rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)]',
         className,
       )}
     >
@@ -31,7 +31,7 @@ export function PageHeader({ title, description, actions }: { title: string; des
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'danger';
 const variants: Record<Variant, string> = {
-  primary: 'bg-brand-500 text-white hover:bg-brand-600 disabled:bg-brand-500/50',
+  primary: 'bg-brand-600 text-white hover:bg-brand-700 disabled:bg-brand-600/50',
   secondary: 'border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-muted)]',
   ghost: 'hover:bg-[var(--surface-muted)]',
   danger: 'bg-danger text-white hover:opacity-90',
@@ -199,6 +199,14 @@ export function Disclaimer({ children }: { children: ReactNode }) {
   return (
     <div className="rounded-xl border border-warning/30 bg-warning-soft px-4 py-3 text-sm text-warning dark:text-volt">
       {children}
+    </div>
+  );
+}
+
+export function LoadingState({ label = 'Yuklanmoqda…' }: { label?: string }) {
+  return (
+    <div className="flex min-h-[40dvh] items-center justify-center">
+      <Spinner label={label} />
     </div>
   );
 }

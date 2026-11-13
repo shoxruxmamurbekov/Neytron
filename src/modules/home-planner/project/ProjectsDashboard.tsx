@@ -66,7 +66,7 @@ export default function ProjectsDashboard() {
       <ProjectFormDialog
         open={creating}
         onClose={() => setCreating(false)}
-        onCreated={(id) => navigate(`/uy-loyihasi/${id}`)}
+        onCreated={(id) => navigate(`/visual-montage/${id}`)}
       />
       <ProjectFormDialog
         key={editing?.id ?? 'edit'}

@@ -44,7 +44,7 @@ export default function ProjectWorkspace({ projectId }: { projectId: string }) {
       <div className="flex flex-col gap-6">
         <EmptyState title="Loyiha topilmadi" description="U o‘chirilgan bo‘lishi mumkin." />
         <div className="flex justify-center">
-          <LinkButton to="/uy-loyihasi">Loyihalarga qaytish</LinkButton>
+          <LinkButton to="/visual-montage">Loyihalarga qaytish</LinkButton>
         </div>
       </div>
     );
@@ -125,7 +125,7 @@ function Workspace({
     <div className="flex flex-col gap-6">
       {/* Sarlavha */}
       <div className="flex flex-col gap-4">
-        <Link to="/uy-loyihasi" className="inline-flex w-fit items-center gap-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)]">
+        <Link to="/visual-montage" className="inline-flex w-fit items-center gap-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)]">
           <ArrowLeft className="size-4" aria-hidden /> Loyihalar
         </Link>
         <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

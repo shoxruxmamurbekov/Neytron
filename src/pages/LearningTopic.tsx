@@ -24,7 +24,7 @@ export default function LearningTopic() {
 
   return (
     <article className="flex flex-col gap-6">
-      <Link to="/learning" className="inline-flex w-fit items-center gap-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)]">
+      <Link to="/academy" className="inline-flex w-fit items-center gap-1 text-sm text-[var(--text-muted)] hover:text-[var(--text)]">
         <ArrowLeft className="size-4" aria-hidden /> O‘quv markazi
       </Link>
 
@@ -71,13 +71,13 @@ export default function LearningTopic() {
 
           <nav aria-label="Mavzular o‘rtasida o‘tish" className="flex flex-col gap-2 text-sm">
             {prev && (
-              <Link to={`/learning/${prev.slug}`} className="rounded-xl border border-[var(--border)] px-4 py-3 hover:border-brand-500/50">
+              <Link to={`/academy/${prev.slug}`} className="rounded-xl border border-[var(--border)] px-4 py-3 hover:border-brand-500/50">
                 <span className="block text-xs text-[var(--text-muted)]">← Oldingi</span>
                 {prev.title}
               </Link>
             )}
             {next && (
-              <Link to={`/learning/${next.slug}`} className="rounded-xl border border-[var(--border)] px-4 py-3 text-right hover:border-brand-500/50">
+              <Link to={`/academy/${next.slug}`} className="rounded-xl border border-[var(--border)] px-4 py-3 text-right hover:border-brand-500/50">
                 <span className="block text-xs text-[var(--text-muted)]">Keyingi →</span>
                 {next.title}
               </Link>

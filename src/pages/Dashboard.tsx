@@ -8,7 +8,7 @@ import { useRecentTopics } from '../hooks/useRecentTopics';
 const tools = [
   { to: '/calculators', label: 'Om qonuni', desc: 'U = I × R hisobi', icon: Calculator },
   { to: '/calculators', label: 'Quvvat', desc: 'P = U × I hisobi', icon: Zap },
-  { to: '/knowledge', label: 'Bilimlar kutubxonasi', desc: 'Atamalar va jihozlar', icon: Library },
+  { to: '/library', label: 'Bilimlar kutubxonasi', desc: 'Atamalar va jihozlar', icon: Library },
   { to: '/diagnostics', label: 'Diagnostika', desc: 'Muammo bo‘yicha qo‘llanma', icon: Stethoscope },
 ];
 
@@ -39,7 +39,7 @@ export default function Dashboard() {
             <LinkButton to="/assistant" variant="primary">
               <MessageSquare className="size-4" aria-hidden /> AI yordamchidan so‘rang
             </LinkButton>
-            <LinkButton to="/learning">
+            <LinkButton to="/academy">
               <BookOpen className="size-4" aria-hidden /> O‘rganishni boshlash
             </LinkButton>
           </div>
@@ -115,7 +115,7 @@ export default function Dashboard() {
                 <ul className="mt-2 flex flex-col gap-1">
                   {recentTopics.map((t) => (
                     <li key={t.slug}>
-                      <Link to={`/learning/${t.slug}`} className="text-sm text-brand-600 hover:underline dark:text-brand-100">
+                      <Link to={`/academy/${t.slug}`} className="text-sm text-brand-600 hover:underline dark:text-brand-100">
                         {t.title}
                       </Link>
                     </li>
@@ -129,7 +129,7 @@ export default function Dashboard() {
                 {recommended.map((t) => (
                   <li key={t.slug} className="flex items-center justify-between gap-3 text-sm">
                     <span>{t.title}</span>
-                    <Link to={`/learning/${t.slug}`} className="rounded-lg px-2 py-1 text-xs font-medium text-brand-600 hover:bg-brand-50 dark:text-brand-100 dark:hover:bg-brand-500/15">
+                    <Link to={`/academy/${t.slug}`} className="rounded-lg px-2 py-1 text-xs font-medium text-brand-600 hover:bg-brand-50 dark:text-brand-100 dark:hover:bg-brand-500/15">
                       Ochish
                     </Link>
                   </li>

@@ -3,41 +3,62 @@
 /* Dark mode toggled by `.dark` class on <html> */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Design tokens — change colors globally here */
+/*
+ * NEYTRON design tokens — yagona manba.
+ * Spacing: Tailwind bazasi 4px; interfeysda asosan 8px karrali qadamlar (2, 4, 6, 8…) ishlatiladi.
+ * Radius: kartalar 16px (rounded-2xl), boshqaruv elementlari 12px (rounded-xl).
+ * Kontrast (WCAG AA, tekshirilgan): oq matn / brand-600 = 5.8:1; brand-500 faqat katta/UI aksent (≥3:1).
+ */
 @theme {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-brand-50: #eef6ff;
-  --color-brand-100: #d9ebff;
-  --color-brand-500: #1d6fd8;
-  --color-brand-600: #1758b0;
-  --color-brand-700: #124387;
+  /* Electric Blue shkalasi */
+  --color-brand-50: #eef5fe;
+  --color-brand-100: #d8e8fc;
+  --color-brand-400: #5b9bf0;
+  --color-brand-500: #2878e5; /* aksent / fon (oq matn bilan 4.28:1 — kichik matn uchun brand-600) */
+  --color-brand-600: #1f63c2; /* tugma va havola (5.8:1) */
+  --color-brand-700: #1b57ad;
 
-  --color-volt: #f5b400; /* elektr ogohlantirish aksenti */
-  --color-danger: #d93025;
-  --color-danger-soft: #fdecea;
-  --color-success: #1e8e3e;
-  --color-success-soft: #e6f4ea;
-  --color-warning: #b26a00;
-  --color-warning-soft: #fff4e0;
+  --color-engineering: #101923; /* Deep Engineering */
+  --color-graphite: #192635; /* Graphite Blue */
+  --color-volt: #f2b544; /* Safety Amber */
+
+  /* Semantik ranglar — yorug‘ rejimda matn uchun to‘qroq, .dark da ochroq */
+  --color-danger: #c23b3b;
+  --color-danger-soft: #fdecec;
+  --color-success: #0b7a56;
+  --color-success-soft: #e4f6ef;
+  --color-warning: #8a5a00;
+  --color-warning-soft: #fff4dc;
 }
 
 :root {
   --surface: #ffffff;
-  --surface-muted: #f6f8fb;
-  --border: #e3e8ef;
-  --text: #0f1b2d;
-  --text-muted: #5b6b82;
+  --surface-muted: #f4f7fb;
+  --border: #dde4ee;
+  --text: #101923;
+  --text-muted: #55657a;
+  --shadow-card: 0 1px 2px rgb(16 25 35 / 0.06);
   color-scheme: light;
 }
 
 .dark {
-  --surface: #0f1726;
-  --surface-muted: #141e30;
-  --border: #22304a;
-  --text: #e6edf7;
-  --text-muted: #94a3b8;
+  --surface: #192635;
+  --surface-muted: #101923;
+  --border: #2a3a50;
+  --text: #e8eef6;
+  --text-muted: #9aa9bc;
+  --shadow-card: none;
+
+  --color-danger: #f08080;
+  --color-danger-soft: #3a2024;
+  --color-success: #34c997;
+  --color-success-soft: #143328;
+  --color-warning: #f2b544;
+  --color-warning-soft: #3a2f14;
   color-scheme: dark;
 }
 
@@ -54,10 +75,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+.font-formula {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-brand-500);
   outline-offset: 2px;
   border-radius: 6px;
+}
+
+.dark :focus-visible {
+  outline-color: var(--color-brand-400);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -81,6 +117,9 @@ body {
   --border: #e3e8ef;
   --text: #0f1b2d;
   --text-muted: #5b6b82;
+  --color-danger: #c23b3b;
+  --color-success: #0b7a56;
+  --color-warning: #8a5a00;
   color: var(--text);
   background: var(--surface);
   font-family: var(--font-sans);

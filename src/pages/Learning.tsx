@@ -16,7 +16,7 @@ export default function Learning() {
       <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {learningTopics.map((t) => (
           <li key={t.slug}>
-            <Link to={`/learning/${t.slug}`} className="group block h-full">
+            <Link to={`/academy/${t.slug}`} className="group block h-full">
               <Card className="flex h-full flex-col gap-3 transition-colors group-hover:border-brand-500/50">
                 <div className="flex items-center justify-between gap-2">
                   <Badge tone={t.level.includes('O‘rta') ? 'warning' : 'success'}>{t.level}</Badge>

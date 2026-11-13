@@ -10,7 +10,7 @@ export default function HomePlanner() {
       <Routes>
         <Route index element={<ProjectsDashboard />} />
         <Route path=":projectId" element={<WorkspaceRoute />} />
-        <Route path="*" element={<Navigate to="/uy-loyihasi" replace />} />
+        <Route path="*" element={<Navigate to="/visual-montage" replace />} />
       </Routes>
     </ProjectStoreProvider>
   );

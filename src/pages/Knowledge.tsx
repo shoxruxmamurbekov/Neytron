@@ -1,11 +1,13 @@
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Badge, Card, EmptyState, Field, Input, PageHeader, Spinner } from '../components/ui';
 import { knowledgeCategories, knowledgeEntries } from '../data/knowledge';
 import { matchesQuery } from '../lib/search';
 import { useDebounced } from '../hooks/useDebounced';
 
 export default function Knowledge() {
-  const [query, setQuery] = useState('');
+  const [params] = useSearchParams();
+  const [query, setQuery] = useState(params.get('q') ?? '');
   const [category, setCategory] = useState<string>('Barchasi');
   const debounced = useDebounced(query, 250);
   const loading = query !== debounced;
